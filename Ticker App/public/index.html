@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto Mono', monospace;
+            background-color: #333;
+            color: #eee;
+            text-align: center;
+        }
+        #ticker-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .sector-group {
+            margin: 20px;
+            padding: 10px;
+            background-color: #444;
+            border-radius: 10px;
+            text-align: center;
+        }
+        .sector-heading {
+            margin-bottom: 10px;
+            color: #fff;
+        }
+        .ticker-item {
+            width: 180px;
+            margin: 5px;
+            padding: 5px;
+            text-align: center;
+            border: 1px solid #555;
+            border-radius: 5px;
+            background-color: #222;
+        }
+        .ticker-item .symbol {
+            color: #fff;
+        }
+        .ticker-item .percentage {
+            font-weight: bold;
+        }
+        .ticker-item .percentage.increase {
+            color: limegreen;
+        }
+        .ticker-item .percentage.decrease {
+            color: red;
+        }
+    </style>
+    <title>Stock Tickers</title>
+</head>
+<body>
+    <h1>📊 Stock Tickers</h1>
+    <div id="ticker-list"></div>
+
+    <script src="script.js"></script>
+    <script>
+        // Example JavaScript code to dynamically change color based on value
+        const tickerItems = document.querySelectorAll('.ticker-item');
+
+        tickerItems.forEach(item => {
+            const percentage = item.querySelector('.percentage');
+            const value = parseFloat(percentage.innerText);
+
+            if (value > 0) {
+                percentage.classList.add('increase');
+            } else if (value < 0) {
+                percentage.classList.add('decrease');
+            }
+        });
+    </script>
+</body>
+</html>
